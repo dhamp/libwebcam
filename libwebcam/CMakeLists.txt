@@ -8,6 +8,7 @@ cmake_minimum_required (VERSION 2.6)
 project (LIBWEBCAM)
 
 
+option(INSTALL_LIBWEBCAM "Install libwebcam" OFF)
 
 #
 # TARGETS
@@ -87,6 +88,7 @@ if (${CMAKE_INSTALL_LIBDIR} MATCHES "^/")
 else (${CMAKE_INSTALL_LIBDIR} MATCHES "^/")
 	message("** Installation directory for libwebcam: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
 endif (${CMAKE_INSTALL_LIBDIR} MATCHES "^/")
+if (INSTALL_LIBWEBCAM)
 install (
 	TARGETS					webcam webcam_static
 	LIBRARY DESTINATION		${CMAKE_INSTALL_LIBDIR}
@@ -106,4 +108,4 @@ install (
 	FILES	../common/include/webcam.h ../common/include/dynctrl-logitech.h
 	DESTINATION 	${CMAKE_INSTALL_PREFIX}/include
 )
-
+endif()
